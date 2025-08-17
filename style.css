@@ -1,0 +1,289 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f9f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+header p {
+    font-size: 1rem;
+}
+
+nav {
+    background: #388e3c;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+/* Logo */
+.logo {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Menu utama */
+#nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;   /* Bikin rata tengah di desktop */
+    flex: 1;                   /* Supaya menu ambil ruang tengah */
+    gap: 10px;
+}
+
+#nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+}
+
+#nav-menu li a:hover,
+#nav-menu li a.active {
+    background: #1b5e20;
+    border-radius: 5px;
+}
+
+/* Tombol hamburger */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Slider */
+.slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 480px;
+}
+
+.slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* efek fade */
+}
+
+
+/* About */
+.about {
+    padding: 20px;
+    text-align: center;
+}
+
+.about h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+/* Berita */
+.news {
+    background: white;
+    padding: 20px;
+}
+
+.news h2 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.news-item {
+    background: #f1f8e9;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.news-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-item h3 {
+    padding: 10px;
+    color: #2e7d32;
+}
+
+.news-item p {
+    padding: 0 10px 15px;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+.form-box {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f1f8e9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.form-box label {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.form-box input, .form-box button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-box button {
+    background: #2e7d32;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.form-box button:hover {
+    background: #1b5e20;
+}
+/* ===================== MEDIA QUERY RESPONSIF ===================== */
+
+/* 1. Tablet kecil & HP layar besar (≤ 768px) */
+@media (max-width: 768px) {
+    /* Navigasi berubah ke hamburger */
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #388e3c;
+        flex: unset;
+    }
+
+    #nav-menu.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    /* Slider lebih ramping */
+    .slides {
+        aspect-ratio: 16/9;
+        height: auto;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr 1fr; /* jadi 2 kolom */
+    }
+}
+
+/* 2. HP menengah (≤ 600px) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .slides {
+        aspect-ratio: 4/3; /* lebih tinggi agar tidak terlalu gepeng */
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr; /* jadi 1 kolom */
+    }
+
+    .news-item img {
+        height: 160px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+/* 3. HP kecil (≤ 375px) */
+@media (max-width: 375px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    header p {
+        font-size: 0.8rem;
+    }
+
+    .slides {
+        aspect-ratio: 3/4; /* layar kecil biasanya portrait */
+    }
+
+    .news-item img {
+        height: 120px;
+    }
+
+    .form-box {
+        padding: 15px;
+    }
+
+    .form-box input, .form-box button {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    footer {
+        font-size: 0.75rem;
+    }
+}
